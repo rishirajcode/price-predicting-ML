@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+
 #rishiraj
 
 # In[31]:
@@ -42,11 +42,9 @@ features
 # In[46]:
 
 
-#selecting age
 
 features[ 'AGE']
 
-#for target
 
 target=pd.DataFrame(boston.target,columns=['target'])
 target
@@ -55,22 +53,17 @@ target
 # In[47]:
 
 
-#for max target
 max(target['target'])
 
 
 # In[49]:
 
 
-#for min target
 min(target['target'])
 
 
 # In[50]:
 
-
-#concatinate the target for one dataframe
-#axis = 1 will make it concatinate column wise
 df=pd.concat([features,target],axis=1)
 df
 #given below is the concatinated dataframe
@@ -79,19 +72,15 @@ df
 # In[53]:
 
 
-#we will visualise the relationhips between the features of the dataset
 
-#using decimal=2 to set the precession to 2 decimal place
 
 df.describe().round(decimals=2)
 
-#complete description table 
 
 
-# In[66]:
+# In66]:
 
 
-#finding the attribute with max correlation 
 
 corr=df.corr('pearson')
 
@@ -108,7 +97,6 @@ lt.sort(key=lambda x: x[0], reverse=True)
 
 corrs,labels=list(zip((*lt)))
 
-#plot correlation wrt target variable as a bar graph
 
 index= np.arange(len(labels))
 plt.figure(figsize=(20,10))
@@ -122,7 +110,6 @@ plt.show()
 # In[67]:
 
 
-#preparing data for linear regrassion
 
 X=df['LSTAT'].values
 Y=df['target'].values
@@ -150,7 +137,6 @@ print(Y[:5])
 # In[75]:
 
 
-#defining error
 
 def error (m,x,t,c):
     N=x.size
@@ -222,7 +208,6 @@ m,c,error_value,values_mc= gradient_descent(init_m,init_c,xtrain,ytrain,learning
 # In[107]:
 
 
-#visualising error
 
 plt.scatter(xtrain,ytrain,color='y')
 
@@ -301,7 +286,6 @@ p=p.round(decimals=2)
 p.head()
 
 
-# In[ ]:
 
 
 
